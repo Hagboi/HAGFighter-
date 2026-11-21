@@ -4,6 +4,11 @@
   const canvas = document.getElementById('game');
   const ctx = canvas.getContext('2d');
   ctx.imageSmoothingEnabled = false;
+  canvas.tabIndex = 0;
+  canvas.addEventListener('pointerdown', () => {
+    canvas.focus();
+    if (Game.scene instanceof TitleScene) Input.tap.add('Enter');
+  });
 
   function resize() {
     const touch = Input.isTouch;
